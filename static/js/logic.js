@@ -45,13 +45,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 // A function to determine the marker size and color 
     function styleInfo(feature){
         return{
-            stroke: false,
+            stroke: true,
             fillOpacity: 1,
             opacity: 1,
             color: "#000000",
             fillColor: getColor(feature.geometry.coordinates[2]),
             radius: getRadius(feature.properties.mag),
-            weight: 0.6
+            weight: 0.5
         }
     }
 
@@ -76,7 +76,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     let grades = [-10, 10, 30, 50, 70, 90];
     let colors = ['#98ee00', '#d4ee00', '#eecc00', '#ee9c00', '#ea822c', '#ea2c2c'];
     for(let index = 0; index < grades.length; index++) {
-        container.innerHTML += `<i style="background: ${colors[index]}"></i> ${grades[index]}+ <br>`
+        container.innerHTML += `<i style="background: ${colors[index]}"></i> ${grades[index]} &ndash; ${grades[index + 1]}<br>`
     }
     return container;
     }
